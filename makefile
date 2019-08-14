@@ -1,4 +1,7 @@
 
+commit:
+	git commit -m "more codes"
+
 main: main.c
 	gcc -o $@ $<
 

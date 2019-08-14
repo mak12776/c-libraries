@@ -32,7 +32,7 @@ void set_error_msg(error_t *error, const char *string)
     }
     else
     {
-        msg = (struct error_msg *)malloc(sizeof(struct error_msg));
+        msg = (struct error_msg *)mem_malloc(sizeof(struct error_msg));
         if (msg == NULL)
         {
             return;
@@ -52,7 +52,8 @@ void set_error_msg(error_t *error, const char *string)
     (*pntr) = msg;
 }
 
-#define log_title(title, file) fprintf(file, "error: " title ":\n")
+
+#define log_title(title, file) fprintf(file, "[ " title " ]:\n")
 
 void dump_error_num(unsigned int num, FILE *file)
 {
@@ -76,9 +77,14 @@ void dump_error_num(unsigned int num, FILE *file)
     {
         log_title("UNDEFINED BEHAVIOR", file);
     }
+    else
+    {
+	log_title("UNKNOWN ERROR NUMBER", file);
+    }
 }
 
 #undef log_title
+
 
 #define log_msg(msg, file) fprintf(file, "%s\n", msg)
 
@@ -104,9 +110,11 @@ void dump_error_msg(error_t *error, FILE *file)
 
 #undef log_msg
 
+
 void dump_error(error_t *error, FILE *file)
 {
     dump_error_num(error->num, file);
     dump_error_msg(error, file);
 }
+
 
