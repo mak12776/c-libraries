@@ -47,14 +47,16 @@ resize_buffer(buffer *buff, size_t size)
     }
 
     buff->pntr = new_pntr;
+    buff->size += size;		// TODO: it's not safe.
+    return new_pntr;
 }
 
 
 void
 free_buffer(buffer *buff)
 {
-    free(buff->pntr);
-    free(buff);
+    mem_free(buff->pntr);
+    mem_free(buff);
 }
 
 
@@ -65,8 +67,9 @@ extend_buffer_size(buffer *buff, size_t size)
 }
 
 
-char *extend_buffer(buffer *buff)
+char *
+extend_buffer(buffer *buff)
 {
-    return resize_buffer(buff, buff->size + size);
+    return extend_buffer_size(buff, ADDITIVE_BUFFER_SIZE);
 }
 
