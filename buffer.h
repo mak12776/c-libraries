@@ -19,7 +19,7 @@ typedef struct
     size_t size;
     size_t start;
     size_t len;
-} start_buffer;
+} start_len_buffer;
 
 #endif
 
