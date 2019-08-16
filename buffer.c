@@ -34,6 +34,14 @@ allocate_buffer()
 }
 
 
+void
+free_buffer(buffer *buff)
+{
+    mem_free(buff->pntr);
+    mem_free(buff);
+}
+
+
 char *
 resize_buffer(buffer *buff, size_t size)
 {
@@ -46,23 +54,15 @@ resize_buffer(buffer *buff, size_t size)
     }
 
     buff->pntr = new_pntr;
-    buff->size += size;				    // TODO: it's not safe.
+    buff->size = size;
     return new_pntr;
-}
-
-
-void
-free_buffer(buffer *buff)
-{
-    mem_free(buff->pntr);
-    mem_free(buff);
 }
 
 
 char *
 extend_buffer_size(buffer *buff, size_t size)
 {
-    return resize_buffer(buff, buff->size + size);
+    return resize_buffer(buff, buff->size + size);	// TODO: It's not safe.
 }
 
 
