@@ -3,6 +3,19 @@
 #include "memory.h"
 
 
+void *
+initial_buffer_size(buffer *buff, size_t size)
+{
+    result->pntr = mem_malloc(size);
+    if (result->pntr == NULL)
+    {
+	result->size = 0;
+	return NULL;
+    }
+    result->size = size;
+    return result->pntr;
+}
+
 buffer *
 allocate_buffer_size(size_t size)
 {
