@@ -4,6 +4,8 @@
 #include "linkedarray.h"
 #include "error.h"
 
+#if 0
+
 struct linked_array *allocate_linked_array(size_t size)
 {
     struct linked_array *result;
@@ -56,9 +58,11 @@ void linked_array_append(struct linked_array *array, void *data, error_t *error)
         p1 = &((*p1)->next);
         if ((*p1) == NULL)
         {
-            
+
         }
     }
-    
-    
+
+
 }
+
+#endif

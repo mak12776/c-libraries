@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 #include "error.h"
+#include "memory.h"
 
 struct error_msg error_msg_array[ERROR_MSG_ARRAY_SIZE];
 size_t error_msg_array_index = 0;
@@ -116,5 +117,3 @@ void dump_error(error_t *error, FILE *file)
     dump_error_num(error->num, file);
     dump_error_msg(error, file);
 }
-
-

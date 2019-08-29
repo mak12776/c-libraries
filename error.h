@@ -2,6 +2,8 @@
 #ifndef ERROR_H
 #define ERROR_H 1
 
+#include <stdio.h>
+
 #define _STR(x) #x
 #define STR(x) _STR(x)
 #define INFO __FILE__ ":" STR(__LINE__) ": "
@@ -32,4 +34,3 @@ void set_error_msg(error_t *error, const char *string);
 void dump_error(error_t *error, FILE *file);
 
 #endif // #ifndef ERROR_H
-
